@@ -35,14 +35,13 @@ The pipeline converts conversational input into deployable agent configuration.
 <div align="center">
 
 ```mermaid
-graph LR
+graph TD
     %% Define Styles
-    classDef demo fill:#d4c4fb,stroke:#9b8af2,stroke-width:2px,color:#1a1a1a;
-    classDef onboard fill:#bce4c6,stroke:#66b579,stroke-width:2px,color:#1a1a1a;
+    classDef demo fill:#d4c4fb,stroke:#9b8af2,stroke-width:2px,color:#1a1a1a,rx:5px,ry:5px;
+    classDef onboard fill:#bce4c6,stroke:#66b579,stroke-width:2px,color:#1a1a1a,rx:5px,ry:5px;
 
     %% Demo Phase Subgraph
     subgraph DemoPhase [Demo Phase]
-        direction TB
         A(Demo Transcript):::demo --> B(n8n Workflow Trigger):::demo
         B --> C(Extraction Engine):::demo
         C --> D(Account Memo v1):::demo
@@ -52,7 +51,6 @@ graph LR
 
     %% Onboarding Phase Subgraph
     subgraph OnboardingPhase [Onboarding Phase]
-        direction TB
         G(Onboarding Transcript):::onboard --> H(Update Extraction):::onboard
         H --> I(Patch Engine):::onboard
         I --> J(Account Memo v2):::onboard
@@ -60,12 +58,16 @@ graph LR
         K --> L(Change Log 📊):::onboard
     end
     
+    %% Force side-by-side layout
+    DemoPhase ~~~ OnboardingPhase
+    A ~~~ G
+    
     %% Connecting Edge
     F -. "feeds into" .-> G
     
     %% Subgraph Styling
-    style DemoPhase fill:#f8f5ff,stroke:#9b8af2,stroke-width:2px,stroke-dasharray: 5 5,color:#333,font-weight:bold;
-    style OnboardingPhase fill:#f4fbf5,stroke:#66b579,stroke-width:2px,stroke-dasharray: 5 5,color:#333,font-weight:bold;
+    style DemoPhase fill:#f8f5ff,stroke:#9b8af2,stroke-width:2px,stroke-dasharray: 5 5,color:#333,font-weight:bold,rx:10px,ry:10px;
+    style OnboardingPhase fill:#f4fbf5,stroke:#66b579,stroke-width:2px,stroke-dasharray: 5 5,color:#333,font-weight:bold,rx:10px,ry:10px;
 ```
 
 </div>
