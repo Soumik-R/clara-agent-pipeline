@@ -1,1 +1,13 @@
-{}
+{
+  "account_id": "",
+  "from_version": "v1",
+  "to_version": "v2",
+  "changes": [
+    {
+      "field": "",
+      "old_value": "",
+      "new_value": "",
+      "reason": ""
+    }
+  ]
+}
