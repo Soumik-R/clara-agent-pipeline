@@ -388,14 +388,43 @@ python scripts/view_diff.py
 ## Example Output
 
 ```
-outputs/accounts/account_ben_electric/
-├── v1/
-│   ├── memo.json
-│   └── agent_spec.json
-├── v2/
-│   ├── memo.json
-│   └── agent_spec.json
-└── changes.json
+DIFF VIEWER: account_ben_electric
+======================================================================
+From Version: v1
+To Version:   v2
+Timestamp:    2026-03-04T13:36:45.917736+00:00
+======================================================================
+
+
+Change #1: business_hours
+----------------------------------------------------------------------
+Old Value: {
+  "days": [],
+  "start_time": "",
+  "end_time": "",
+  "timezone": ""
+}
+New Value: {
+  "days": [
+    "monday",
+    "tuesday",
+    "wednesday",
+    "thursday",
+    "friday"
+  ],
+  "start_time": "08:00",
+  "end_time": "17:00",
+  "timezone": "MST"
+}
+Reason:    Updated during onboarding
+
+Change #2: emergency_definition
+----------------------------------------------------------------------
+Old Value: []
+New Value: ["power outage", "sparking electrical panel"]
+Reason:    Updated during onboarding
+
+======================================================================
 ```
 
 ---
@@ -409,40 +438,3 @@ The system was built using the following principles:
 - **Version controlled agent specifications** — Full configuration history
 - **Reproducible automation pipelines** — Consistent execution
 - **Modular processing components** — Easy to extend and modify
-
----
-
-## Future Improvements
-
-Potential improvements include:
-
-- Semantic extraction using local LLMs
-- Direct Retell API integration
-- Automatic onboarding dashboards
-- More advanced routing logic extraction
-- Monitoring and logging for production deployments
-
----
-
-## Demo
-
-The accompanying demonstration video shows:
-
-- Running the automation pipeline
-- Generated agent configurations
-- Version update from v1 to v2
-- Change log generation
-- n8n workflow orchestration
-
----
-
-## Repository
-
-This README is designed to feel **like a real engineering repo** because it:
-
-- Mixes explanation + commands
-- Shows example outputs
-- Shows workflow diagrams
-- References actual files in the repo
-- Includes setup instructions
-- Documents design decisions
