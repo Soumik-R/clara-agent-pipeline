@@ -21,7 +21,31 @@ Automation is orchestrated using **n8n**, while the processing logic is implemen
 
 The pipeline converts conversational input into deployable agent configuration.
 
-![n8n Workflow](Images/n8n_Workflow.png)
+```
+Demo Transcript
+    ↓
+n8n Workflow Trigger
+    ↓
+Extraction Engine
+    ↓
+Account Memo (v1)
+    ↓
+Agent Prompt Generator
+    ↓
+Agent Spec (v1)
+
+Onboarding Transcript
+    ↓
+Update Extraction
+    ↓
+Patch Engine
+    ↓
+Account Memo (v2)
+    ↓
+Agent Spec (v2)
+    ↓
+Change Log
+```
 
 ---
 
