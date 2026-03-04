@@ -2,14 +2,21 @@
   "account_id": "account_ben_electric",
   "company_name": "Ben Electric",
   "industry": "Electrical Services",
-  "services_supported": [
-    "ev charger installation",
-    "hot tub wiring",
-    "panel upgrades"
-  ],
-  "questions_or_unknowns": [
-    "Business hours not explicitly stated",
-    "Emergency routing rules not specified",
-    "Call transfer timeout not defined"
-  ]
+  "business_hours": {
+    "days": [],
+    "start_time": "",
+    "end_time": "",
+    "timezone": ""
+  },
+  "office_address": "",
+  "services_supported": [],
+  "emergency_definition": [],
+  "emergency_routing_rules": {},
+  "non_emergency_routing_rules": {},
+  "call_transfer_rules": {},
+  "integration_constraints": [],
+  "after_hours_flow_summary": "",
+  "office_hours_flow_summary": "",
+  "questions_or_unknowns": [],
+  "notes": "Initial demo extraction"
 }
