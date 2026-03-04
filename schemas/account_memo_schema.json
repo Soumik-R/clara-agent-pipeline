@@ -1,0 +1,41 @@
+{
+  "account_id": "",
+  "company_name": "",
+  "industry": "",
+  "business_hours": {
+    "days": [],
+    "start_time": "",
+    "end_time": "",
+    "timezone": ""
+  },
+
+
+  "office_address": "",
+  "services_supported": [],
+  "emergency_definition": [],
+  "emergency_routing_rules": {
+    "priority_order": [],
+    "transfer_timeout_seconds": null,
+    "fallback_action": ""
+  },
+
+  
+  "non_emergency_routing_rules": {
+    "during_business_hours": "",
+    "after_hours": ""
+  },
+
+
+  "call_transfer_rules": {
+    "max_retries": null,
+    "retry_delay_seconds": null,
+    "failure_message": ""
+  },
+
+
+  "integration_constraints": [],
+  "after_hours_flow_summary": "",
+  "office_hours_flow_summary": "",
+  "questions_or_unknowns": [],
+  "notes": ""
+}
