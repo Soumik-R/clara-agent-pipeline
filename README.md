@@ -41,10 +41,12 @@ graph TD
     classDef scriptPink fill:#ff9ce6,stroke:#333,stroke-width:1px,color:#000;
     classDef scriptBlue fill:#b3b3ff,stroke:#333,stroke-width:1px,color:#000;
     classDef dataGreen fill:#c6f2cb,stroke:#333,stroke-width:1px,color:#000;
+    classDef invis fill:transparent,stroke:transparent,color:transparent;
 
     %% Demo Phase Subgraph
     subgraph DemoPhase ["Pipeline A: Demo Call"]
-        A[Demo Transcript]:::darkNode -->|n8n Orchestrator| B[[extract_demo_data.py]]:::scriptPink
+        Spacer1[ ]:::invis ~~~ A[Demo Transcript]:::darkNode
+        A -->|n8n Orchestrator| B[[extract_demo_data.py]]:::scriptPink
         B --> C[(v1_memo.json)]:::dataGreen
         C --> D[[generate_prompt.py]]:::scriptBlue
         D --> E[Retell Agent Spec v1]:::dataGreen
@@ -52,7 +54,8 @@ graph TD
 
     %% Onboarding Phase Subgraph
     subgraph OnboardingPhase ["Pipeline B: Onboarding Update"]
-        F[Onboarding Transcript]:::darkNode -->|n8n Orchestrator| G[[update_from_onboarding.py]]:::scriptPink
+        Spacer2[ ]:::invis ~~~ F[Onboarding Transcript]:::darkNode
+        F -->|n8n Orchestrator| G[[update_from_onboarding.py]]:::scriptPink
         G --> H[(v2_memo.json)]:::dataGreen
         G --> I[changes.json Diff]:::darkNode
         H --> J[[generate_prompt.py]]:::scriptBlue
@@ -61,14 +64,15 @@ graph TD
     
     %% Force side-by-side layout naturally
     DemoPhase ~~~ OnboardingPhase
+    Spacer1 ~~~ Spacer2
     A ~~~ F
     
     %% Cross-pipeline state connection
     C -. "System State" .-> G
     
     %% Make Subgraph Backgrounds Transparent
-    style DemoPhase fill:transparent,stroke:none;
-    style OnboardingPhase fill:transparent,stroke:none;
+    style DemoPhase fill:transparent,stroke:transparent;
+    style OnboardingPhase fill:transparent,stroke:transparent;
 ```
 
 </div>
