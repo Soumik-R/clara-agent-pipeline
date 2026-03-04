@@ -17,84 +17,85 @@ Automation is orchestrated using **n8n**, while the processing logic is implemen
 
 ---
 
-# System Workflow
+## System Workflow
 
 The pipeline converts conversational input into deployable agent configuration.
 
-
+```
 Demo Transcript
-↓
+    ↓
 n8n Workflow Trigger
-↓
+    ↓
 Extraction Engine
-↓
+    ↓
 Account Memo (v1)
-↓
+    ↓
 Agent Prompt Generator
-↓
+    ↓
 Agent Spec (v1)
 
 Onboarding Transcript
-↓
+    ↓
 Update Extraction
-↓
+    ↓
 Patch Engine
-↓
+    ↓
 Account Memo (v2)
-↓
+    ↓
 Agent Spec (v2)
-↓
+    ↓
 Change Log
-
+```
 
 ---
 
-# Project Structure
+## Project Structure
 
-
+```
 clara-agent-config-pipeline/
-
-dataset/
-demo_calls/
-onboarding_calls/
-
-schemas/
-account_memo_schema.json
-agent_spec_schema.json
-change_log_schema.json
-
-scripts/
-extract_demo_data.py
-generate_prompt.py
-update_from_onboarding.py
-
-utils/
-transcript_parser.py
-diff_engine.py
-supabase_client.py
-
-outputs/
-accounts/
-<account_id>/
-v1/
-memo.json
-agent_spec.json
-v2/
-memo.json
-agent_spec.json
-changes.json
-
-workflows/
-n8n_pipeline.json
-
-main.py
-requirements.txt
-README.md
-
+│
+├── dataset/
+│   ├── demo_calls/
+│   └── onboarding_calls/
+│
+├── schemas/
+│   ├── account_memo_schema.json
+│   └── agent_spec_schema.json
+│
+├── scripts/
+│   ├── extract_demo_data.py
+│   ├── generate_prompt.py
+│   ├── update_from_onboarding.py
+│   └── view_diff.py
+│
+├── utils/
+│   ├── transcript_parser.py
+│   ├── diff_engine.py
+│   ├── supabase_client.py
+│   └── version_manager.py
+│
+├── outputs/
+│   └── accounts/
+│       └── <account_id>/
+│           ├── v1/
+│           │   ├── memo.json
+│           │   └── agent_spec.json
+│           ├── v2/
+│           │   ├── memo.json
+│           │   └── agent_spec.json
+│           └── changes.json
+│
+├── workflows/
+│   └── n8n_pipeline.json
+│
+├── main.py
+├── requirements.txt
+└── README.md
+```
 
 ---
 
-# Phase 1 — Schema Design
+## Phase 1 — Schema Design
 
 The system starts by defining schemas that convert conversations into structured configuration.
 
@@ -108,263 +109,340 @@ Example:
 {
   "account_id": "account_ben_electric",
   "company_name": "Ben Electric",
-  "services_supported": ["panel upgrades","electrical repair"],
+  "services_supported": ["panel upgrades", "electrical repair"],
   "business_hours": {
-    "days": ["monday","tuesday","wednesday","thursday","friday"],
+    "days": ["monday", "tuesday", "wednesday", "thursday", "friday"],
     "start_time": "08:00",
     "end_time": "17:00",
     "timezone": "MST"
   }
 }
-Agent Specification Schema
+```
+
+### Agent Specification Schema
 
 Defines the Clara voice agent configuration.
 
+```json
 {
   "agent_name": "Ben Electric Voice Assistant",
   "voice_style": "professional",
   "version": "v1"
 }
-Change Log Schema
+```
+
+### Change Log Schema
 
 Tracks configuration updates during onboarding.
 
+```json
 {
   "field": "business_hours.start_time",
   "old_value": "",
   "new_value": "08:00"
 }
-Phase 2 — n8n Workflow Orchestration
+```
+
+---
+
+## Phase 2 — n8n Workflow Orchestration
 
 Automation is triggered using an n8n workflow.
 
 Workflow:
 
+```
 Manual Trigger
       ↓
 Execute Command
       ↓
 python main.py
+```
 
 Workflow definition:
 
+```
 workflows/n8n_pipeline.json
+```
 
 This design allows the system to integrate easily into workflow automation environments.
 
-Phase 3 — Demo Transcript Extraction
+---
+
+## Phase 3 — Demo Transcript Extraction
 
 Demo call transcripts are processed to generate a structured account configuration.
 
 Example transcript input:
 
+```
 Client mentioned they handle electrical repairs, EV charger installation and panel upgrades.
+```
 
 Extraction script:
 
+```
 scripts/extract_demo_data.py
+```
 
 Run manually:
 
+```bash
 python scripts/extract_demo_data.py
+```
 
 Output:
 
+```
 outputs/accounts/account_ben_electric/v1/memo.json
-Phase 4 — Agent Prompt Generation
+```
+
+---
+
+## Phase 4 — Agent Prompt Generation
 
 Using the extracted account memo, the system generates a Clara voice agent configuration.
 
 Script:
 
+```
 scripts/generate_prompt.py
+```
 
 Run:
 
+```bash
 python scripts/generate_prompt.py
+```
 
 Output:
 
+```
 outputs/accounts/account_ben_electric/v1/agent_spec.json
+```
 
 Example generated agent configuration:
 
+```json
 {
   "agent_name": "Ben Electric Voice Assistant",
   "voice_style": "professional",
   "version": "v1"
 }
-Phase 5 — Onboarding Update Engine
+```
+
+---
+
+## Phase 5 — Onboarding Update Engine
 
 When onboarding conversations provide new operational information, the pipeline updates the existing configuration.
 
 Example onboarding transcript:
 
+```
 Business hours confirmed as Monday to Friday 8AM to 5PM.
 Emergency calls include power outages.
+```
 
 Script:
 
+```
 scripts/update_from_onboarding.py
+```
 
 Run:
 
+```bash
 python scripts/update_from_onboarding.py
+```
 
 Output:
 
+```
 outputs/accounts/account_ben_electric/v2/memo.json
 outputs/accounts/account_ben_electric/v2/agent_spec.json
-Phase 6 — Configuration Versioning
+```
+
+---
+
+## Phase 6 — Configuration Versioning
 
 The system preserves configuration history.
 
 Example structure:
 
+```
 outputs/accounts/account_ben_electric/
-
-v1/
-    memo.json
-    agent_spec.json
-
-v2/
-    memo.json
-    agent_spec.json
+├── v1/
+│   ├── memo.json
+│   └── agent_spec.json
+├── v2/
+│   ├── memo.json
+│   └── agent_spec.json
+└── changes.json
+```
 
 Version 1 represents the configuration generated from the demo call.
 
 Version 2 includes updates confirmed during onboarding.
 
-Phase 7 — Change Tracking
+---
+
+## Phase 7 — Change Tracking
 
 Every configuration update is recorded.
 
 Example:
 
+```
 outputs/accounts/account_ben_electric/changes.json
+```
 
 Example log:
 
+```json
 {
   "field": "business_hours.start_time",
   "old_value": "",
   "new_value": "08:00",
   "reason": "Updated during onboarding"
 }
+```
 
 This allows the system to maintain a full configuration history.
 
-Phase 8 — Batch Processing
+---
+
+## Phase 8 — Batch Processing
 
 The pipeline processes multiple accounts automatically.
 
 Dataset folders:
 
+```
 dataset/demo_calls/
 dataset/onboarding_calls/
+```
 
 Run the full pipeline:
 
+```bash
 python main.py
+```
 
 The pipeline automatically:
 
-Extracts demo information
+- Extracts demo information
+- Generates agent configurations
+- Applies onboarding updates
+- Logs configuration changes
 
-Generates agent configurations
+---
 
-Applies onboarding updates
-
-Logs configuration changes
-
-Optional Database Integration
+## Optional Database Integration
 
 The system can optionally mirror configuration data into Supabase.
 
 Stored entities:
 
-accounts
-
-agent configuration versions
-
-change logs
+- accounts
+- agent configuration versions
+- change logs
 
 This simulates how the pipeline would operate in a production environment.
 
-Running the Project
+---
 
-Install dependencies:
+## Running the Project
 
+### 1. Install dependencies:
+
+```bash
 pip install -r requirements.txt
+```
 
-Run the pipeline:
+### 2. Set up environment variables:
 
+Copy `.env.example` to `.env` and fill in your Supabase credentials:
+
+```bash
+cp .env.example .env
+```
+
+### 3. Run the pipeline:
+
+```bash
 python main.py
+```
 
 Or trigger it through n8n.
 
-Example Output
-outputs/accounts/account_ben_electric/
+### 4. View changes:
 
-v1/
-  memo.json
-  agent_spec.json
-
-v2/
-  memo.json
-  agent_spec.json
-
-changes.json
-Design Principles
-
-The system was built using the following principles:
-
-structured configuration generation
-
-no hallucinated configuration values
-
-version controlled agent specifications
-
-reproducible automation pipelines
-
-modular processing components
-
-Future Improvements
-
-Potential improvements include:
-
-semantic extraction using local LLMs
-
-direct Retell API integration
-
-automatic onboarding dashboards
-
-more advanced routing logic extraction
-
-monitoring and logging for production deployments
-
-Demo
-
-The accompanying demonstration video shows:
-
-Running the automation pipeline
-
-Generated agent configurations
-
-Version update from v1 to v2
-
-Change log generation
-
-n8n workflow orchestration
-
+```bash
+python scripts/view_diff.py
+```
 
 ---
 
-This README will feel **more like a real engineering repo** because it:
+## Example Output
 
-- mixes explanation + commands
-- shows example outputs
-- shows workflow diagrams
-- references actual files in the repo
+```
+outputs/accounts/account_ben_electric/
+├── v1/
+│   ├── memo.json
+│   └── agent_spec.json
+├── v2/
+│   ├── memo.json
+│   └── agent_spec.json
+└── changes.json
+```
 
-If you want, I can also show you **two tiny additions that make the repo look like something built by 
+---
+
+## Design Principles
+
+The system was built using the following principles:
+
+- **Structured configuration generation** — No manual config editing
+- **No hallucinated configuration values** — All data extracted from transcripts
+- **Version controlled agent specifications** — Full configuration history
+- **Reproducible automation pipelines** — Consistent execution
+- **Modular processing components** — Easy to extend and modify
+
+---
+
+## Future Improvements
+
+Potential improvements include:
+
+- Semantic extraction using local LLMs
+- Direct Retell API integration
+- Automatic onboarding dashboards
+- More advanced routing logic extraction
+- Monitoring and logging for production deployments
+
+---
+
+## Demo
+
+The accompanying demonstration video shows:
+
+- Running the automation pipeline
+- Generated agent configurations
+- Version update from v1 to v2
+- Change log generation
+- n8n workflow orchestration
+
+---
+
+## Repository
+
+This README is designed to feel **like a real engineering repo** because it:
+
+- Mixes explanation + commands
+- Shows example outputs
+- Shows workflow diagrams
+- References actual files in the repo
+- Includes setup instructions
+- Documents design decisions
