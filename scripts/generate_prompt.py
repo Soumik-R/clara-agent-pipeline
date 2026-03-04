@@ -2,17 +2,23 @@ import json
 import os
 
 
+# -------------------------------
+# STEP 1: Generate System Prompt
+# -------------------------------
+
 def generate_prompt(memo):
 
-    company = memo["company_name"]
-    services = ", ".join(memo["services_supported"])
+    company = memo.get("company_name", "the company")
+    services = memo.get("services_supported", [])
+
+    services_text = ", ".join(services) if services else "general electrical services"
 
     prompt = f"""
 You are the AI call assistant for {company}.
 
 Your job is to help callers, collect required information, and route calls correctly.
 
-Supported services include: {services}
+Supported services include: {services_text}
 
 BUSINESS HOURS FLOW:
 1. Greet the caller professionally.
@@ -45,3 +51,55 @@ RULES:
 """
 
     return prompt
+
+
+# -------------------------------
+# STEP 2: Build Agent Spec
+# -------------------------------
+
+def build_agent_spec(memo):
+
+    prompt = generate_prompt(memo)
+
+    agent_spec = {
+        "agent_name": f"{memo.get('company_name', 'Company')} Voice Assistant",
+        "voice_style": "professional and calm",
+        "system_prompt": prompt,
+        "key_variables": {
+            "company_name": memo.get("company_name", ""),
+            "services_supported": memo.get("services_supported", []),
+            "business_hours": memo.get("business_hours", {}),
+            "office_address": memo.get("office_address", "")
+        },
+        "call_transfer_protocol": "Transfer caller to appropriate team after collecting name and phone number.",
+        "transfer_fail_protocol": "Apologize and inform caller that the team will follow up shortly.",
+        "tool_invocation_placeholders": [],
+        "version": "v1"
+    }
+
+    return agent_spec
+
+
+# -------------------------------
+# STEP 3: Run Script
+# -------------------------------
+
+if __name__ == "__main__":
+
+    memo_path = "outputs/accounts/account_ben_electric/v1/memo.json"
+
+    with open(memo_path) as f:
+        memo = json.load(f)
+
+    agent_spec = build_agent_spec(memo)
+
+    output_dir = "outputs/accounts/account_ben_electric/v1"
+
+    os.makedirs(output_dir, exist_ok=True)
+
+    output_path = os.path.join(output_dir, "agent_spec.json")
+
+    with open(output_path, "w") as f:
+        json.dump(agent_spec, f, indent=2)
+
+    print("Agent spec generated successfully.")
