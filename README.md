@@ -160,7 +160,7 @@ graph TD
             Spacer1[ ]:::invis ~~~ A[Demo Transcript]:::darkNode
             A -->|n8n Orchestrator| B[[extract_demo_data.py]]:::scriptPink
             B --> C[(v1_memo.json)]:::dataGreen
-            C --> D[[generate_prompt.py]]:::scriptBlue
+            C --> D[["generate_prompt.py\n(Prompt + Agent Builder)"]]:::scriptBlue
             D --> E[Retell Agent Spec v1]:::dataGreen
         end
 
@@ -171,7 +171,7 @@ graph TD
             F -->|n8n Orchestrator| G[[update_from_onboarding.py]]:::scriptPink
             G --> H[(v2_memo.json)]:::dataGreen
             G --> I[changes.json Diff]:::darkNode
-            H --> J[[generate_prompt.py]]:::scriptBlue
+            H --> J[["generate_prompt.py\n(Prompt + Agent Builder)"]]:::scriptBlue
             J --> K[Retell Agent Spec v2]:::dataGreen
         end
     end
