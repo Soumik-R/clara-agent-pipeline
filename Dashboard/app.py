@@ -4,8 +4,10 @@ import json
 import subprocess
 import re
 
-# Use absolute path to ensure it works regardless of where the app is run from
-BASE_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "outputs", "accounts")
+# Use absolute path - go up one level from Dashboard folder to project root
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(SCRIPT_DIR)
+BASE_PATH = os.path.join(PROJECT_ROOT, "outputs", "accounts")
 
 st.set_page_config(page_title="Clara Agent Pipeline", layout="wide", initial_sidebar_state="collapsed")
 
@@ -163,7 +165,7 @@ with tab3:
             st.write("Initializing standard runtime...")
             
             try:
-                result = subprocess.run(["python", "main.py"], capture_output=True, text=True)
+                result = subprocess.run(["python", "main.py"], capture_output=True, text=True, cwd=PROJECT_ROOT)
                 
                 if result.returncode == 0:
                     status.update(label="Pipeline execution completed successfully.", state="complete", expanded=False)

@@ -10,10 +10,10 @@
   },
   "office_address": "",
   "services_supported": [
+    "electrical repair",
     "lighting installation",
-    "panel upgrades",
     "ev charger installation",
-    "electrical repair"
+    "panel upgrades"
   ],
   "emergency_definition": [],
   "emergency_routing_rules": {},
