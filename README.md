@@ -287,29 +287,13 @@ This simulates how the pipeline would operate in a production environment.
 
 ### 1. Install dependencies:
 
-```bash
-pip install -r requirements.txt
-```
-
 ### 2. Set up environment variables:
-
-Copy `.env.example` to `.env` and fill in your Supabase credentials:
-
-```bash
-cp .env.example .env
-```
 
 ### 3. Run the pipeline:
 
-```bash
-python main.py
-```
-
-Or trigger it through n8n.
-
 ### 4. View changes via Dashboard:
 
-We have introduced a beautifully designed Streamlit Dashboard to visually audit the entire pipeline extraction, config diffs, and account states.
+I have introduced a beautifully designed Streamlit Dashboard to visually audit the entire pipeline extraction, config diffs, and account states.
 
 ```bash
 pip install streamlit
