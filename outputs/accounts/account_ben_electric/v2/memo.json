@@ -1,1 +1,31 @@
-{}
+{
+  "account_id": "account_ben_electric",
+  "company_name": "Ben Electric",
+  "industry": "Electrical Services",
+  "business_hours": {
+    "days": [
+      "monday",
+      "tuesday",
+      "wednesday",
+      "thursday",
+      "friday"
+    ],
+    "start_time": "08:00",
+    "end_time": "17:00",
+    "timezone": "MST"
+  },
+  "office_address": "",
+  "services_supported": [],
+  "emergency_definition": [
+    "power outage",
+    "sparking electrical panel"
+  ],
+  "emergency_routing_rules": {},
+  "non_emergency_routing_rules": {},
+  "call_transfer_rules": {},
+  "integration_constraints": [],
+  "after_hours_flow_summary": "",
+  "office_hours_flow_summary": "",
+  "questions_or_unknowns": [],
+  "notes": "Initial demo extraction"
+}
