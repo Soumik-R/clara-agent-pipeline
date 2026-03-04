@@ -36,38 +36,39 @@ The pipeline converts conversational input into deployable agent configuration.
 
 ```mermaid
 graph TD
-    %% Modern styling with Tailwind-inspired colors
-    classDef demo fill:#f3e8ff,stroke:#a855f7,stroke-width:2px,color:#4c1d95,rx:8px,ry:8px,font-weight:600;
-    classDef onboard fill:#dcfce7,stroke:#22c55e,stroke-width:2px,color:#14532d,rx:8px,ry:8px,font-weight:600;
+    %% Custom Styles inspired by user screenshot
+    classDef darkNode fill:#1E1E1E,stroke:#555,stroke-width:1px,color:#fff;
+    classDef scriptPink fill:#ff9ce6,stroke:#333,stroke-width:1px,color:#000;
+    classDef scriptBlue fill:#b3b3ff,stroke:#333,stroke-width:1px,color:#000;
+    classDef dataGreen fill:#c6f2cb,stroke:#333,stroke-width:1px,color:#000;
 
     %% Demo Phase Subgraph
-    subgraph DemoPhase ["✨ Demo Phase"]
-        A(["📄 Demo Transcript"]):::demo ==> B(["⚡ n8n Workflow Trigger"]):::demo
-        B ==> C(["🧠 Extraction Engine"]):::demo
-        C ==> D(["📝 Account Memo (v1)"]):::demo
-        D ==> E(["🤖 Agent Prompt Generator"]):::demo
-        E ==> F(["✅ Agent Spec (v1)"]):::demo
+    subgraph DemoPhase ["Pipeline A: Demo Call"]
+        A[Demo Transcript]:::darkNode -->|n8n Orchestrator| B[[extract_demo_data.py]]:::scriptPink
+        B --> C[(v1_memo.json)]:::dataGreen
+        C --> D[[generate_prompt.py]]:::scriptBlue
+        D --> E[Retell Agent Spec v1]:::dataGreen
     end
 
     %% Onboarding Phase Subgraph
-    subgraph OnboardingPhase ["🔄 Onboarding Phase"]
-        G(["📄 Onboarding Transcript"]):::onboard ==> H(["🔍 Update Extraction"]):::onboard
-        H ==> I(["🧩 Patch Engine"]):::onboard
-        I ==> J(["📝 Account Memo (v2)"]):::onboard
-        J ==> K(["🤖 Agent Spec (v2)"]):::onboard
-        K ==> L(["📊 Change Log"]):::onboard
+    subgraph OnboardingPhase ["Pipeline B: Onboarding Update"]
+        F[Onboarding Transcript]:::darkNode -->|n8n Orchestrator| G[[update_from_onboarding.py]]:::scriptPink
+        G --> H[(v2_memo.json)]:::dataGreen
+        G --> I[changes.json Diff]:::darkNode
+        H --> J[[generate_prompt.py]]:::scriptBlue
+        J --> K[Retell Agent Spec v2]:::dataGreen
     end
     
-    %% Force side-by-side layout
+    %% Force side-by-side layout naturally
     DemoPhase ~~~ OnboardingPhase
-    A ~~~ G
+    A ~~~ F
     
-    %% Connecting Edge
-    F -.->|"feeds into"| G
+    %% Cross-pipeline state connection
+    C -. "System State" .-> G
     
-    %% Apply Subgraph Styling
-    style DemoPhase fill:#faf5ff,stroke:#d8b4fe,stroke-width:2px,stroke-dasharray: 5 5,color:#6b21a8,rx:16px,ry:16px;
-    style OnboardingPhase fill:#f0fdf4,stroke:#86efac,stroke-width:2px,stroke-dasharray: 5 5,color:#166534,rx:16px,ry:16px;
+    %% Make Subgraph Backgrounds Transparent
+    style DemoPhase fill:transparent,stroke:none;
+    style OnboardingPhase fill:transparent,stroke:none;
 ```
 
 </div>
