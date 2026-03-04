@@ -385,6 +385,85 @@ python scripts/view_diff.py
 
 ---
 
+## Retell Integration
+
+The pipeline generates a Retell-compatible agent configuration specification.
+
+Output file:
+
+```
+outputs/accounts/<account_id>/v1/agent_spec.json
+```
+
+or
+
+```
+outputs/accounts/<account_id>/v2/agent_spec.json
+```
+
+These files contain the information required to configure a Clara voice agent including:
+
+- agent name
+- system prompt
+- voice style
+- operational variables
+- call transfer logic
+- fallback behavior
+
+Example agent specification:
+
+```json
+{
+  "agent_name": "Ben Electric Voice Assistant",
+  "voice_style": "professional and calm",
+  "version": "v2"
+}
+```
+
+### Creating an Agent in Retell
+
+1. Create a free account at:
+
+```
+https://retellai.com
+```
+
+2. Navigate to the **Agents** section.
+
+3. Click **Create Agent**.
+
+4. Configure the agent using the generated specification:
+
+**Agent Name**  
+→ Use `agent_name` from the JSON file
+
+**Voice Style**  
+→ Configure according to `voice_style`
+
+**System Prompt**  
+→ Copy the `system_prompt` field from `agent_spec.json`
+
+**Variables**  
+→ Map the values from `key_variables`
+
+**Call Transfer Logic**  
+→ Configure according to `call_transfer_protocol`
+
+**Fallback Logic**  
+→ Use `transfer_fail_protocol`
+
+5. Save the agent.
+
+The generated configuration can then be used to deploy the voice agent inside the Retell platform.
+
+### API Integration
+
+If Retell API access is available, the generated `agent_spec.json` can be used as the request payload to programmatically create agents through the Retell API.
+
+This repository currently generates the configuration specification required for such integrations.
+
+---
+
 ## Example Output
 
 ```
