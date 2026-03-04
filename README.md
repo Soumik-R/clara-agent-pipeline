@@ -79,23 +79,7 @@ Tracks configuration updates during onboarding.
 
 Automation is triggered using an n8n workflow.
 
-Workflow:
-
-```
-Manual Trigger
-      ↓
-Execute Command
-      ↓
-python main.py
-```
-
-Workflow definition:
-
-```
-workflows/n8n_pipeline.json
-```
-
-This design allows the system to integrate easily into workflow automation environments.
+![Pipeline Workflow Diagram](Images/n8n_Workflow.png)
 
 ---
 
