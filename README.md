@@ -36,26 +36,26 @@ The pipeline converts conversational input into deployable agent configuration.
 
 ```mermaid
 graph TD
-    %% Define Styles
-    classDef demo fill:#d4c4fb,stroke:#9b8af2,stroke-width:2px,color:#1a1a1a,rx:5px,ry:5px;
-    classDef onboard fill:#bce4c6,stroke:#66b579,stroke-width:2px,color:#1a1a1a,rx:5px,ry:5px;
+    %% Modern styling with Tailwind-inspired colors
+    classDef demo fill:#f3e8ff,stroke:#a855f7,stroke-width:2px,color:#4c1d95,rx:8px,ry:8px,font-weight:600;
+    classDef onboard fill:#dcfce7,stroke:#22c55e,stroke-width:2px,color:#14532d,rx:8px,ry:8px,font-weight:600;
 
     %% Demo Phase Subgraph
-    subgraph DemoPhase [Demo Phase]
-        A(Demo Transcript):::demo --> B(n8n Workflow Trigger):::demo
-        B --> C(Extraction Engine):::demo
-        C --> D(Account Memo v1):::demo
-        D --> E(Agent Prompt Generator):::demo
-        E --> F(Agent Spec v1 ✓):::demo
+    subgraph DemoPhase ["✨ Demo Phase"]
+        A(["📄 Demo Transcript"]):::demo ==> B(["⚡ n8n Workflow Trigger"]):::demo
+        B ==> C(["🧠 Extraction Engine"]):::demo
+        C ==> D(["📝 Account Memo (v1)"]):::demo
+        D ==> E(["🤖 Agent Prompt Generator"]):::demo
+        E ==> F(["✅ Agent Spec (v1)"]):::demo
     end
 
     %% Onboarding Phase Subgraph
-    subgraph OnboardingPhase [Onboarding Phase]
-        G(Onboarding Transcript):::onboard --> H(Update Extraction):::onboard
-        H --> I(Patch Engine):::onboard
-        I --> J(Account Memo v2):::onboard
-        J --> K(Agent Spec v2):::onboard
-        K --> L(Change Log 📊):::onboard
+    subgraph OnboardingPhase ["🔄 Onboarding Phase"]
+        G(["📄 Onboarding Transcript"]):::onboard ==> H(["🔍 Update Extraction"]):::onboard
+        H ==> I(["🧩 Patch Engine"]):::onboard
+        I ==> J(["📝 Account Memo (v2)"]):::onboard
+        J ==> K(["🤖 Agent Spec (v2)"]):::onboard
+        K ==> L(["📊 Change Log"]):::onboard
     end
     
     %% Force side-by-side layout
@@ -63,11 +63,11 @@ graph TD
     A ~~~ G
     
     %% Connecting Edge
-    F -. "feeds into" .-> G
+    F -.->|"feeds into"| G
     
-    %% Subgraph Styling
-    style DemoPhase fill:#f8f5ff,stroke:#9b8af2,stroke-width:2px,stroke-dasharray: 5 5,color:#333,font-weight:bold,rx:10px,ry:10px;
-    style OnboardingPhase fill:#f4fbf5,stroke:#66b579,stroke-width:2px,stroke-dasharray: 5 5,color:#333,font-weight:bold,rx:10px,ry:10px;
+    %% Apply Subgraph Styling
+    style DemoPhase fill:#faf5ff,stroke:#d8b4fe,stroke-width:2px,stroke-dasharray: 5 5,color:#6b21a8,rx:16px,ry:16px;
+    style OnboardingPhase fill:#f0fdf4,stroke:#86efac,stroke-width:2px,stroke-dasharray: 5 5,color:#166534,rx:16px,ry:16px;
 ```
 
 </div>
