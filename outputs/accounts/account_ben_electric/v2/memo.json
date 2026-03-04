@@ -15,10 +15,15 @@
     "timezone": "MST"
   },
   "office_address": "",
-  "services_supported": [],
+  "services_supported": [
+    "lighting installation",
+    "panel upgrades",
+    "ev charger installation",
+    "electrical repair"
+  ],
   "emergency_definition": [
-    "power outage",
-    "sparking electrical panel"
+    "power outages",
+    "sparking electrical panels"
   ],
   "emergency_routing_rules": {},
   "non_emergency_routing_rules": {},

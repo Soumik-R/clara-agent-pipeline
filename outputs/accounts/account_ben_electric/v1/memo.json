@@ -9,7 +9,12 @@
     "timezone": ""
   },
   "office_address": "",
-  "services_supported": [],
+  "services_supported": [
+    "lighting installation",
+    "panel upgrades",
+    "ev charger installation",
+    "electrical repair"
+  ],
   "emergency_definition": [],
   "emergency_routing_rules": {},
   "non_emergency_routing_rules": {},

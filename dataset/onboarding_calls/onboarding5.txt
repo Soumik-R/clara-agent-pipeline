@@ -1,0 +1,5 @@
+During onboarding the client confirmed their business hours.
+
+Business hours are 24/7.
+
+Emergency calls include total server crashes, ransomware attacks, and complete network outages.
