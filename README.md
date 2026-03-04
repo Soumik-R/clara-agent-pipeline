@@ -339,7 +339,7 @@ The pipeline automatically:
 
 ---
 
-## Optional Database Integration
+## Database Integration
 
 The system can optionally mirror configuration data into Supabase.
 
