@@ -12,7 +12,7 @@
 
 ---
 
-## 📋 Overview
+<h2 align="center">📋 Overview</h2>
 
 Service trade businesses often describe their operations during demo and onboarding calls. These conversations include critical operational information such as business hours, emergency handling rules, supported services, and call routing instructions.
 
@@ -28,7 +28,7 @@ This project implements an automation pipeline that converts those conversations
 
 ---
 
-## ⚙️ System Workflow
+<h2 align="center">⚙️ System Workflow</h2>
 
 The pipeline converts conversational input into deployable agent configuration.
 
@@ -79,7 +79,7 @@ graph TD
 
 ---
 
-## 🏗️ Phase 1 — Schema Design
+<h2 align="center">🏗️ Phase 1 — Schema Design</h2>
 
 The system starts by defining schemas that convert conversations into structured configuration.
 
@@ -136,7 +136,7 @@ Tracks configuration updates during onboarding.
 
 ---
 
-## 🔄 Phase 2 — n8n Workflow Orchestration
+<h2 align="center">🔄 Phase 2 — n8n Workflow Orchestration</h2>
 
 Automation is triggered using an n8n workflow.
 
@@ -146,7 +146,7 @@ Automation is triggered using an n8n workflow.
 
 ---
 
-## 🎙️ Phase 3 — Demo Transcript Extraction
+<h2 align="center">🎙️ Phase 3 — Demo Transcript Extraction</h2>
 
 Demo call transcripts are processed to generate a structured account configuration.
 
@@ -166,7 +166,7 @@ outputs/accounts/account_ben_electric/v1/memo.json
 
 ---
 
-## 🧠 Phase 4 — Agent Prompt Generation
+<h2 align="center">🧠 Phase 4 — Agent Prompt Generation</h2>
 
 Using the extracted account memo, the system generates a Clara voice agent configuration.
 
@@ -195,7 +195,7 @@ outputs/accounts/account_ben_electric/v1/agent_spec.json
 
 ---
 
-## 📈 Phase 5 — Onboarding Update Engine
+<h2 align="center">📈 Phase 5 — Onboarding Update Engine</h2>
 
 When onboarding conversations provide new operational information, the pipeline updates the existing configuration.
 
@@ -216,7 +216,7 @@ outputs/accounts/account_ben_electric/v2/agent_spec.json
 
 ---
 
-## 🗂️ Phase 6 — Configuration Versioning
+<h2 align="center">🗂️ Phase 6 — Configuration Versioning</h2>
 
 The system preserves configuration history. Version 1 represents the configuration generated from the demo call, while Version 2 includes updates confirmed during onboarding.
 
@@ -233,7 +233,7 @@ outputs/accounts/account_ben_electric/
 
 ---
 
-## 🔍 Phase 7 — Change Tracking
+<h2 align="center">🔍 Phase 7 — Change Tracking</h2>
 
 Every configuration update is recorded. This allows the system to maintain a full configuration history.
 
@@ -254,7 +254,7 @@ Every configuration update is recorded. This allows the system to maintain a ful
 
 ---
 
-## ⚡ Phase 8 — Batch Processing
+<h2 align="center">⚡ Phase 8 — Batch Processing</h2>
 
 The pipeline processes multiple accounts automatically.
 
@@ -277,7 +277,7 @@ python main.py
 
 ---
 
-## 🗄️ Database Integration
+<h2 align="center">🗄️ Database Integration</h2>
 
 The system can optionally mirror configuration data into **Supabase**. This simulates how the pipeline would operate in a production environment.
 
@@ -288,7 +288,7 @@ The system can optionally mirror configuration data into **Supabase**. This simu
 
 ---
 
-## 🚀 Running the Project
+<h2 align="center">🚀 Running the Project</h2>
 
 ### 1. Install Dependencies
 ```bash
@@ -327,7 +327,7 @@ streamlit run Dashboard/app.py
 
 ---
 
-## 📞 Retell Integration
+<h2 align="center">📞 Retell Integration</h2>
 
 The pipeline generates a Retell-compatible agent configuration specification.
 
