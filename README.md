@@ -141,7 +141,64 @@ Tracks configuration updates during onboarding.
 Automation is triggered using an n8n workflow.
 
 <div align="center">
-  <img src="Images/n8n_Workflow.png" alt="Pipeline Workflow Diagram">
+
+```mermaid
+graph TD
+    classDef purple fill:#f5e8f9,stroke:#c084fc,stroke-width:1px,color:#9333ea,rx:5px,ry:5px;
+    classDef blue fill:#eff6ff,stroke:#93c5fd,stroke-width:1px,color:#3b82f6,rx:5px,ry:5px;
+    classDef grey fill:#f3f4f6,stroke:#d1d5db,stroke-width:1px,color:#4b5563,rx:5px,ry:5px;
+    classDef green fill:#f0fdf4,stroke:#86efac,stroke-width:1px,color:#22c55e,rx:5px,ry:5px;
+    classDef orange fill:#fff7ed,stroke:#fdba74,stroke-width:1px,color:#ea580c,rx:5px,ry:5px;
+
+    style DemoPhase fill:transparent,stroke:none,color:#1f2937,font-weight:bold,font-size:14px;
+    style OnboardingPhase fill:transparent,stroke:none,color:#1f2937,font-weight:bold,font-size:14px;
+
+    O[n8n Workflow Orchestrator]:::purple
+
+    subgraph DemoPhase ["Demo Pipeline"]
+        A[Demo Transcript]:::blue
+        B[Extraction Engine]:::grey
+        C[Account Memo v1]:::orange
+        D[Agent Spec v1]:::orange
+
+        A --> B
+        B --> C
+        C --> D
+    end
+
+    subgraph OnboardingPhase ["Onboarding Pipeline"]
+        E[Onboarding Transcript]:::blue
+        F[Update Extraction]:::green
+        G[Patch Engine]:::grey
+        H[Account Memo v2]:::orange
+        I[Agent Spec v2]:::orange
+        J[Change Log]:::orange
+
+        E --> F
+        F --> G
+        G --> H
+        H --> I
+        I --> J
+    end
+
+    O --> A
+    O --> E
+    
+    C -.-> G
+
+    linkStyle 0 stroke:#3b82f6,stroke-width:1px;
+    linkStyle 1 stroke:#6b7280,stroke-width:1px;
+    linkStyle 2 stroke:#ea580c,stroke-width:1px;
+    linkStyle 3 stroke:#3b82f6,stroke-width:1px;
+    linkStyle 4 stroke:#22c55e,stroke-width:1px;
+    linkStyle 5 stroke:#6b7280,stroke-width:1px;
+    linkStyle 6 stroke:#ea580c,stroke-width:1px;
+    linkStyle 7 stroke:#ea580c,stroke-width:1px;
+    linkStyle 8 stroke:#9333ea,stroke-width:1px;
+    linkStyle 9 stroke:#9333ea,stroke-width:1px;
+    linkStyle 10 stroke:#9ca3af,stroke-width:1px,stroke-dasharray: 4 4;
+```
+
 </div>
 
 ---
