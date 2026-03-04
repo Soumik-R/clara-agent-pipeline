@@ -23,8 +23,6 @@ The pipeline converts conversational input into deployable agent configuration.
 
 ![Pipeline Architecture](Images/Workflow.png)
 
-![Pipeline Workflow Diagram](Images/n8n_Workflow.png)
-
 ---
 
 ## Phase 1 — Schema Design
