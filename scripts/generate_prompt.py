@@ -8,6 +8,26 @@ from utils.supabase_client import save_account_version
 # -------------------------------
 
 def generate_prompt(memo):
+    hours = memo.get("business_hours", {})
+    days = hours.get("days", [])
+    start = hours.get("start_time", "")
+    end = hours.get("end_time", "")
+    tz = hours.get("timezone", "")
+    
+    business_hours_text = ""
+    
+    if days and start and end:
+        business_hours_text = f"""
+Business hours are {', '.join(days)} from {start} to {end} {tz}.
+"""
+
+    emergency_definitions = memo.get("emergency_definition", [])
+    emergency_text = ""
+    
+    if emergency_definitions:
+        emergency_text = f"""
+Emergency situations include: {', '.join(emergency_definitions)}.
+"""
 
     company = memo.get("company_name", "the company")
     services = memo.get("services_supported", [])
@@ -15,7 +35,11 @@ def generate_prompt(memo):
     services_text = ", ".join(services) if services else "general electrical services"
 
     prompt = f"""
+
 You are the AI call assistant for {company}.
+
+{business_hours_text}
+{emergency_text}
 
 Your job is to help callers, collect required information, and route calls correctly.
 
@@ -49,8 +73,10 @@ RULES:
 - Do not ask unnecessary questions.
 - Only collect information needed for routing and dispatch.
 - Never mention internal tools or system processes.
-"""
 
+
+"""
+    
     return prompt
 
 

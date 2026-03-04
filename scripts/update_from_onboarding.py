@@ -2,6 +2,7 @@ import json
 import os
 from datetime import datetime, timezone
 from scripts.generate_prompt import build_agent_spec
+from utils.diff_engine import print_changes
 
 
 # --------------------------------
@@ -95,6 +96,8 @@ if __name__ == "__main__":
     updates = extract_updates_from_onboarding(onboarding_transcript)
 
     v2_memo, changes = patch_memo(v1_memo, updates)
+
+    print_changes(changes)
 
     v2_dir = f"{base_path}/v2"
 
