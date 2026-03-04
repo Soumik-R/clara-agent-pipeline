@@ -21,31 +21,89 @@ Automation is orchestrated using **n8n**, while the processing logic is implemen
 
 The pipeline converts conversational input into deployable agent configuration.
 
-```
-Demo Transcript
-    ↓
-n8n Workflow Trigger
-    ↓
-Extraction Engine
-    ↓
-Account Memo (v1)
-    ↓
-Agent Prompt Generator
-    ↓
-Agent Spec (v1)
+<div align="center">
 
-Onboarding Transcript
-    ↓
-Update Extraction
-    ↓
-Patch Engine
-    ↓
-Account Memo (v2)
-    ↓
-Agent Spec (v2)
-    ↓
-Change Log
+### 📋 Demo Phase
 ```
+┌─────────────────────┐
+│  Demo Transcript    │
+│  (Initial Contact)  │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│ n8n Workflow        │
+│ Trigger             │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│ Extraction Engine   │
+│ (LLM Processing)    │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│ Account Memo (v1)   │
+│ (Structured Data)   │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│ Agent Prompt        │
+│ Generator           │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│ Agent Spec (v1)     │
+│ ✓ Ready to Deploy   │
+└─────────────────────┘
+```
+
+### 🔄 Onboarding Phase
+```
+┌─────────────────────┐
+│ Onboarding          │
+│ Transcript          │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│ Update Extraction   │
+│ (Delta Detection)   │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│ Patch Engine        │
+│ (Smart Merge)       │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│ Account Memo (v2)   │
+│ (Updated Config)    │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│ Agent Spec (v2)     │
+│ (Refined Agent)     │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│ Change Log          │
+│ 📊 Audit Trail      │
+└─────────────────────┘
+```
+
+</div>
+
+**Or view the complete visual workflow:**
+
+![Pipeline Workflow](Images/n8n_Workflow.png)
 
 ---
 
