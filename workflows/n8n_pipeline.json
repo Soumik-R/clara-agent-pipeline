@@ -1,0 +1,55 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "2bac6519-0fa5-4bbc-ab6f-13f6fe4a94d0",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "command": "python D:\\Study\\Projects\\clara-agent-pipeline\\main.py\n"
+      },
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        208,
+        0
+      ],
+      "id": "41e541c8-cb47-446a-8863-c45ec1d67494",
+      "name": "Execute Command"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Execute Command",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "afd5d3ba-04f9-41a7-b639-65d3998837b8",
+  "meta": {
+    "instanceId": "ef4b628e78a4e007702c7e5ba0298ac61c2f0100a84538dfa3604cc8b6dd0b4f"
+  },
+  "id": "RdEFu9Ec57foHS7I",
+  "tags": []
+}
