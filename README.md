@@ -21,89 +21,23 @@ Automation is orchestrated using **n8n**, while the processing logic is implemen
 
 The pipeline converts conversational input into deployable agent configuration.
 
-<div align="center">
-
-### 📋 Demo Phase
 ```
-┌─────────────────────┐
-│  Demo Transcript    │
-│  (Initial Contact)  │
-└──────────┬──────────┘
-           │
-           ▼
-┌─────────────────────┐
-│ n8n Workflow        │
-│ Trigger             │
-└──────────┬──────────┘
-           │
-           ▼
-┌─────────────────────┐
-│ Extraction Engine   │
-│ (LLM Processing)    │
-└──────────┬──────────┘
-           │
-           ▼
-┌─────────────────────┐
-│ Account Memo (v1)   │
-│ (Structured Data)   │
-└──────────┬──────────┘
-           │
-           ▼
-┌─────────────────────┐
-│ Agent Prompt        │
-│ Generator           │
-└──────────┬──────────┘
-           │
-           ▼
-┌─────────────────────┐
-│ Agent Spec (v1)     │
-│ ✓ Ready to Deploy   │
-└─────────────────────┘
+📋 Demo Phase                    🔄 Onboarding Phase
+─────────────────                ───────────────────────
+Demo Transcript                  Onboarding Transcript
+      ↓                                 ↓
+n8n Workflow Trigger             Update Extraction
+      ↓                                 ↓
+Extraction Engine                Patch Engine
+      ↓                                 ↓
+Account Memo (v1)                Account Memo (v2)
+      ↓                                 ↓
+Agent Prompt Generator           Agent Spec (v2)
+      ↓                                 ↓
+Agent Spec (v1) ✓                Change Log 📊
 ```
 
-### 🔄 Onboarding Phase
-```
-┌─────────────────────┐
-│ Onboarding          │
-│ Transcript          │
-└──────────┬──────────┘
-           │
-           ▼
-┌─────────────────────┐
-│ Update Extraction   │
-│ (Delta Detection)   │
-└──────────┬──────────┘
-           │
-           ▼
-┌─────────────────────┐
-│ Patch Engine        │
-│ (Smart Merge)       │
-└──────────┬──────────┘
-           │
-           ▼
-┌─────────────────────┐
-│ Account Memo (v2)   │
-│ (Updated Config)    │
-└──────────┬──────────┘
-           │
-           ▼
-┌─────────────────────┐
-│ Agent Spec (v2)     │
-│ (Refined Agent)     │
-└──────────┬──────────┘
-           │
-           ▼
-┌─────────────────────┐
-│ Change Log          │
-│ 📊 Audit Trail      │
-└─────────────────────┘
-```
-
-</div>
-
-**Or view the complete visual workflow:**
-
-![Pipeline Workflow](Images/n8n_Workflow.png)
+![Pipeline Workflow Diagram](Images/n8n_Workflow.png)
 
 ---
 
