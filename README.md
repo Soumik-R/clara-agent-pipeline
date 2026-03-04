@@ -388,43 +388,14 @@ python scripts/view_diff.py
 ## Example Output
 
 ```
-DIFF VIEWER: account_ben_electric
-======================================================================
-From Version: v1
-To Version:   v2
-Timestamp:    2026-03-04T13:36:45.917736+00:00
-======================================================================
-
-
-Change #1: business_hours
-----------------------------------------------------------------------
-Old Value: {
-  "days": [],
-  "start_time": "",
-  "end_time": "",
-  "timezone": ""
-}
-New Value: {
-  "days": [
-    "monday",
-    "tuesday",
-    "wednesday",
-    "thursday",
-    "friday"
-  ],
-  "start_time": "08:00",
-  "end_time": "17:00",
-  "timezone": "MST"
-}
-Reason:    Updated during onboarding
-
-Change #2: emergency_definition
-----------------------------------------------------------------------
-Old Value: []
-New Value: ["power outage", "sparking electrical panel"]
-Reason:    Updated during onboarding
-
-======================================================================
+outputs/accounts/account_ben_electric/
+├── v1/
+│   ├── memo.json
+│   └── agent_spec.json
+├── v2/
+│   ├── memo.json
+│   └── agent_spec.json
+└── changes.json
 ```
 
 ---
