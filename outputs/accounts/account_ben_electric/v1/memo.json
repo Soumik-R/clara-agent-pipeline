@@ -1,0 +1,15 @@
+{
+  "account_id": "account_ben_electric",
+  "company_name": "Ben Electric",
+  "industry": "Electrical Services",
+  "services_supported": [
+    "ev charger installation",
+    "hot tub wiring",
+    "panel upgrades"
+  ],
+  "questions_or_unknowns": [
+    "Business hours not explicitly stated",
+    "Emergency routing rules not specified",
+    "Call transfer timeout not defined"
+  ]
+}
