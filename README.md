@@ -315,11 +315,13 @@ We have introduced a beautifully designed Streamlit Dashboard to visually audit 
 pip install streamlit
 streamlit run Dashboard/app.py
 ```
-
-Features included in the Dashboard:
-- **Dashboard Overview (Tab 1):** View all extracted agent accounts, contact numbers, and complete V1 and V2 JSON schemas in expandable cards.
-- **Configuration Diff Viewer (Tab 2):** Audit exactly what operational fields changed during Onboarding using a clean data table.
-- **Pipeline Control (Tab 3):** Run the complete end-to-end `main.py` Python extraction script directly from the UI and view the results.
+![Pipeline Workflow Diagram](Images/Tab1.png)
+![Pipeline Workflow Diagram](Images/Tab2.png)
+![Pipeline Workflow Diagram](Images/Tab3.png)
+<!-- Features included in the Dashboard:
+- **Dashboard Overview :** View all extracted agent accounts, contact numbers, and complete V1 and V2 JSON schemas in expandable cards.
+- **Configuration Diff Viewer :** Audit exactly what operational fields changed during Onboarding using a clean data table.
+- **Pipeline Control :** Run the complete end-to-end `main.py` Python extraction script directly from the UI and view the results. -->
 
 ---
 
