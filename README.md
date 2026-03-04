@@ -1,39 +1,52 @@
-# Clara Agent Configuration Automation Pipeline
+<div align="center">
 
-## Overview
+# 🤖 Clara Agent Configuration Automation Pipeline
+
+**An automation pipeline that converts service trade demo and onboarding conversations into structured AI voice agent configurations.**
+
+[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
+[![n8n](https://img.shields.io/badge/n8n-Workflow_Automation-orange.svg)](https://n8n.io/)
+[![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-FF4B4B.svg)](https://streamlit.io/)
+
+</div>
+
+---
+
+## 📋 Overview
 
 Service trade businesses often describe their operations during demo and onboarding calls. These conversations include critical operational information such as business hours, emergency handling rules, supported services, and call routing instructions.
 
 This project implements an automation pipeline that converts those conversations into **structured AI voice agent configurations** that can be deployed in Clara.
 
-The system processes demo and onboarding transcripts and produces:
+### The system processes transcripts and produces:
+- 🗂️ **Structured operational account data**
+- 🤖 **Versioned Clara agent specifications**
+- 📝 **Configuration change tracking**
+- ⚡ **Batch automation for multiple accounts**
 
-- Structured operational account data
-- Versioned Clara agent specifications
-- Configuration change tracking
-- Batch automation for multiple accounts
-
-Automation is orchestrated using **n8n**, while the processing logic is implemented in Python.
+> Automation is orchestrated using **n8n**, while the processing logic is implemented in **Python**.
 
 ---
 
-## System Workflow
+## ⚙️ System Workflow
 
 The pipeline converts conversational input into deployable agent configuration.
 
-![Pipeline Architecture](Images/Workflow.png)
+<div align="center">
+  <img src="Images/Workflow.png" alt="Pipeline Architecture">
+</div>
 
 ---
 
-## Phase 1 — Schema Design
+## 🏗️ Phase 1 — Schema Design
 
 The system starts by defining schemas that convert conversations into structured configuration.
 
-### Account Memo Schema
-
+### 📄 Account Memo Schema
 Stores operational information extracted from conversations.
 
-Example:
+<details>
+<summary><b>View Example</b></summary>
 
 ```json
 {
@@ -48,10 +61,13 @@ Example:
   }
 }
 ```
+</details>
 
-### Agent Specification Schema
-
+### 🤖 Agent Specification Schema
 Defines the Clara voice agent configuration.
+
+<details>
+<summary><b>View Example</b></summary>
 
 ```json
 {
@@ -60,10 +76,13 @@ Defines the Clara voice agent configuration.
   "version": "v1"
 }
 ```
+</details>
 
-### Change Log Schema
-
+### 📝 Change Log Schema
 Tracks configuration updates during onboarding.
+
+<details>
+<summary><b>View Example</b></summary>
 
 ```json
 {
@@ -72,70 +91,57 @@ Tracks configuration updates during onboarding.
   "new_value": "08:00"
 }
 ```
+</details>
 
 ---
 
-## Phase 2 — n8n Workflow Orchestration
+## 🔄 Phase 2 — n8n Workflow Orchestration
 
 Automation is triggered using an n8n workflow.
 
-![Pipeline Workflow Diagram](Images/n8n_Workflow.png)
+<div align="center">
+  <img src="Images/n8n_Workflow.png" alt="Pipeline Workflow Diagram">
+</div>
 
 ---
 
-## Phase 3 — Demo Transcript Extraction
+## 🎙️ Phase 3 — Demo Transcript Extraction
 
 Demo call transcripts are processed to generate a structured account configuration.
 
-Example transcript input:
+**Example transcript input:**
+> *"Client mentioned they handle electrical repairs, EV charger installation and panel upgrades."*
 
-```
-Client mentioned they handle electrical repairs, EV charger installation and panel upgrades.
-```
-
-Extraction script:
-
-```
-scripts/extract_demo_data.py
-```
-
-Run manually:
-
+**Execution:**
 ```bash
+# Script: scripts/extract_demo_data.py
 python scripts/extract_demo_data.py
 ```
 
-Output:
-
-```
+**Output:**
+```text
 outputs/accounts/account_ben_electric/v1/memo.json
 ```
 
 ---
 
-## Phase 4 — Agent Prompt Generation
+## 🧠 Phase 4 — Agent Prompt Generation
 
 Using the extracted account memo, the system generates a Clara voice agent configuration.
 
-Script:
-
-```
-scripts/generate_prompt.py
-```
-
-Run:
-
+**Execution:**
 ```bash
+# Script: scripts/generate_prompt.py
 python scripts/generate_prompt.py
 ```
 
-Output:
-
-```
+**Output:**
+```text
 outputs/accounts/account_ben_electric/v1/agent_spec.json
 ```
 
-Example generated agent configuration:
+<details>
+<summary><b>View Example Generated Agent Configuration</b></summary>
 
 ```json
 {
@@ -144,48 +150,36 @@ Example generated agent configuration:
   "version": "v1"
 }
 ```
+</details>
 
 ---
 
-## Phase 5 — Onboarding Update Engine
+## 📈 Phase 5 — Onboarding Update Engine
 
 When onboarding conversations provide new operational information, the pipeline updates the existing configuration.
 
-Example onboarding transcript:
+**Example onboarding transcript:**
+> *"Business hours confirmed as Monday to Friday 8AM to 5PM. Emergency calls include power outages."*
 
-```
-Business hours confirmed as Monday to Friday 8AM to 5PM.
-Emergency calls include power outages.
-```
-
-Script:
-
-```
-scripts/update_from_onboarding.py
-```
-
-Run:
-
+**Execution:**
 ```bash
+# Script: scripts/update_from_onboarding.py
 python scripts/update_from_onboarding.py
 ```
 
-Output:
-
-```
+**Output:**
+```text
 outputs/accounts/account_ben_electric/v2/memo.json
 outputs/accounts/account_ben_electric/v2/agent_spec.json
 ```
 
 ---
 
-## Phase 6 — Configuration Versioning
+## 🗂️ Phase 6 — Configuration Versioning
 
-The system preserves configuration history.
+The system preserves configuration history. Version 1 represents the configuration generated from the demo call, while Version 2 includes updates confirmed during onboarding.
 
-Example structure:
-
-```
+```text
 outputs/accounts/account_ben_electric/
 ├── v1/
 │   ├── memo.json
@@ -196,23 +190,16 @@ outputs/accounts/account_ben_electric/
 └── changes.json
 ```
 
-Version 1 represents the configuration generated from the demo call.
-
-Version 2 includes updates confirmed during onboarding.
-
 ---
 
-## Phase 7 — Change Tracking
+## 🔍 Phase 7 — Change Tracking
 
-Every configuration update is recorded.
+Every configuration update is recorded. This allows the system to maintain a full configuration history.
 
-Example:
+**Log File:** `outputs/accounts/account_ben_electric/changes.json`
 
-```
-outputs/accounts/account_ben_electric/changes.json
-```
-
-Example log:
+<details>
+<summary><b>View Example Log</b></summary>
 
 ```json
 {
@@ -222,60 +209,60 @@ Example log:
   "reason": "Updated during onboarding"
 }
 ```
-
-This allows the system to maintain a full configuration history.
+</details>
 
 ---
 
-## Phase 8 — Batch Processing
+## ⚡ Phase 8 — Batch Processing
 
 The pipeline processes multiple accounts automatically.
 
-Dataset folders:
-
-```
+**Dataset folders:**
+```text
 dataset/demo_calls/
 dataset/onboarding_calls/
 ```
 
-Run the full pipeline:
-
+**Run the full pipeline:**
 ```bash
 python main.py
 ```
 
-The pipeline automatically:
-
-- Extracts demo information
-- Generates agent configurations
-- Applies onboarding updates
-- Logs configuration changes
-
----
-
-## Database Integration
-
-The system can optionally mirror configuration data into Supabase.
-
-Stored entities:
-
-- accounts
-- agent configuration versions
-- change logs
-
-This simulates how the pipeline would operate in a production environment.
+**The pipeline automatically:**
+1. Extracts demo information
+2. Generates agent configurations
+3. Applies onboarding updates
+4. Logs configuration changes
 
 ---
 
-## Running the Project
+## 🗄️ Database Integration
 
-### 1. Install dependencies
+The system can optionally mirror configuration data into **Supabase**. This simulates how the pipeline would operate in a production environment.
 
-### 2. Set up environment variables
+**Stored entities:**
+- `accounts`
+- `agent configuration versions`
+- `change logs`
 
-### 3. Run the pipeline
+---
 
-### 4. View changes via Dashboard
+## 🚀 Running the Project
+
+### 1. Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### 2. Set Up Environment Variables
+Create a `.env` file and add necessary credentials.
+
+### 3. Run the Pipeline
+```bash
+python main.py
+```
+
+### 4. View Changes via Dashboard
 
 I have introduced a beautifully designed Streamlit Dashboard to visually audit the entire pipeline extraction, config diffs, and account states.
 
@@ -283,9 +270,15 @@ I have introduced a beautifully designed Streamlit Dashboard to visually audit t
 pip install streamlit
 streamlit run Dashboard/app.py
 ```
-![Pipeline Workflow Diagram](Images/Tab1.png)
-![Pipeline Workflow Diagram](Images/Tab2.png)
-![Pipeline Workflow Diagram](Images/Tab3.png)
+
+<div align="center">
+  <img src="Images/Tab1.png" alt="Dashboard Overview">
+  <br><br>
+  <img src="Images/Tab2.png" alt="Configuration Diff Viewer">
+  <br><br>
+  <img src="Images/Tab3.png" alt="Pipeline Control">
+</div>
+
 <!-- Features included in the Dashboard:
 - **Dashboard Overview :** View all extracted agent accounts, contact numbers, and complete V1 and V2 JSON schemas in expandable cards.
 - **Configuration Diff Viewer :** Audit exactly what operational fields changed during Onboarding using a clean data table.
@@ -293,26 +286,22 @@ streamlit run Dashboard/app.py
 
 ---
 
-## Retell Integration
+## 📞 Retell Integration
 
 The pipeline generates a Retell-compatible agent configuration specification.
 
-Output file:
-
-```
-outputs/accounts/<account_id>/v1/agent_spec.json
-```
+**Output file:** `outputs/accounts/<account_id>/v1/agent_spec.json`
 
 These files contain the information required to configure a Clara voice agent including:
+- Agent name
+- System prompt
+- Voice style
+- Operational variables
+- Call transfer logic
+- Fallback behavior
 
-- agent name
-- system prompt
-- voice style
-- operational variables
-- call transfer logic
-- fallback behavior
-
-Example agent specification:
+<details>
+<summary><b>View Example Agent Specification</b></summary>
 
 ```json
 {
@@ -321,13 +310,14 @@ Example agent specification:
   "version": "v2"
 }
 ```
+</details>
 
 ---
 
 <div align="center">
 
-### Thank You! 
+### ✨ Thank You! ✨
 
-**Thank you for exploring the Clara Agent Configuration Automation Pipeline.**
+**Thank you for exploring the Clara Agent Configuration Automation Pipeline**
 
 </div>
