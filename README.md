@@ -321,3 +321,13 @@ Example agent specification:
   "version": "v2"
 }
 ```
+
+---
+
+<div align="center">
+
+### Thank You! 
+
+**Thank you for exploring the Clara Agent Configuration Automation Pipeline.**
+
+</div>
