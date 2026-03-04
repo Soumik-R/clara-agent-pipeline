@@ -377,11 +377,19 @@ python main.py
 
 Or trigger it through n8n.
 
-### 4. View changes:
+### 4. View changes via Dashboard:
+
+We have introduced a beautifully designed Streamlit Dashboard to visually audit the entire pipeline extraction, config diffs, and account states.
 
 ```bash
-python scripts/view_diff.py
+pip install streamlit
+streamlit run Dashboard/app.py
 ```
+
+Features included in the Dashboard:
+- **Dashboard Overview (Tab 1):** View all extracted agent accounts, contact numbers, and complete V1 and V2 JSON schemas in expandable cards.
+- **Configuration Diff Viewer (Tab 2):** Audit exactly what operational fields changed during Onboarding using a clean data table.
+- **Pipeline Control (Tab 3):** Run the complete end-to-end `main.py` Python extraction script directly from the UI and view the results.
 
 ---
 
