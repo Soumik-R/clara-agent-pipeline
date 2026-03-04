@@ -103,6 +103,7 @@ if __name__ == "__main__":
     save_json(f"{v2_dir}/memo.json", v2_memo)
 
     agent_spec_v2 = build_agent_spec(v2_memo)
+    agent_spec_v2["version"] = "v2"
 
     save_json(f"{v2_dir}/agent_spec.json", agent_spec_v2)
 

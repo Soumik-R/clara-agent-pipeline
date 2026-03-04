@@ -1,6 +1,7 @@
 import json
 import os
 
+from utils.supabase_client import save_account_version
 
 # -------------------------------
 # STEP 1: Generate System Prompt

@@ -22,7 +22,10 @@ def detect_services(text):
         "panel upgrades": ["panel change", "panel upgrade"],
         "outlet replacement": ["outlet replacement"],
         "electrical troubleshooting": ["troubleshoot", "troubleshooting"],
-        "aluminum wiring remediation": ["aluminum wiring"]
+        "aluminum wiring remediation": ["aluminum wiring"],
+        "electrical repair": ["repair", "fix wiring"],
+        "outlet installation": ["outlet", "socket"],
+        "lighting installation": ["lighting"]
     }
 
     for service, keywords in service_keywords.items():

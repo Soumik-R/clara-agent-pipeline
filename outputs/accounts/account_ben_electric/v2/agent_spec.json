@@ -22,5 +22,5 @@
   "call_transfer_protocol": "Transfer caller to appropriate team after collecting name and phone number.",
   "transfer_fail_protocol": "Apologize and inform caller that the team will follow up shortly.",
   "tool_invocation_placeholders": [],
-  "version": "v1"
+  "version": "v2"
 }
