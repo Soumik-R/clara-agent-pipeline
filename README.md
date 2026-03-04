@@ -17,24 +17,33 @@ Automation is orchestrated using **n8n**, while the processing logic is implemen
 
 ---
 
-## System Workflow
+## Pipeline Architecture
 
-The pipeline converts conversational input into deployable agent configuration.
+> Converts conversational input into deployable agent configuration.
 
-```
-📋 Demo Phase                    🔄 Onboarding Phase
-─────────────────                ───────────────────────
-Demo Transcript                  Onboarding Transcript
-      ↓                                 ↓
-n8n Workflow Trigger             Update Extraction
-      ↓                                 ↓
-Extraction Engine                Patch Engine
-      ↓                                 ↓
-Account Memo (v1)                Account Memo (v2)
-      ↓                                 ↓
-Agent Prompt Generator           Agent Spec (v2)
-      ↓                                 ↓
-Agent Spec (v1) ✓                Change Log 📊
+```mermaid
+flowchart LR
+    subgraph DEMO["🗒️  Demo Phase"]
+        direction TB
+        A[Demo Transcript]
+        --> B[n8n Workflow Trigger]
+        --> C[Extraction Engine]
+        --> D[Account Memo v1]
+        --> E[Agent Prompt Generator]
+        --> F[Agent Spec v1]
+    end
+
+    subgraph ONBOARDING["🔄  Onboarding Phase"]
+        direction TB
+        G[Onboarding Transcript]
+        --> H[Update Extraction]
+        --> I[Patch Engine]
+        --> J[Account Memo v2]
+        --> K[Agent Spec v2]
+        --> L[Change Log]
+    end
+
+    F --→ G
 ```
 
 ![Pipeline Workflow Diagram](Images/n8n_Workflow.png)
