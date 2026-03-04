@@ -1,0 +1,15 @@
+{
+  "agent_name": "",
+  "voice_style": "",
+  "system_prompt": "",
+  "key_variables": {
+    "business_hours": {},
+    "timezone": "",
+    "office_address": "",
+    "emergency_definition": []
+  },
+  "call_transfer_protocol": "",
+  "transfer_fail_protocol": "",
+  "tool_invocation_placeholders": [],
+  "version": "v1"
+}
