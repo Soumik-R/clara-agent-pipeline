@@ -4,7 +4,8 @@ import json
 import subprocess
 import re
 
-BASE_PATH = "outputs/accounts"
+# Use absolute path to ensure it works regardless of where the app is run from
+BASE_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "outputs", "accounts")
 
 st.set_page_config(page_title="Clara Agent Pipeline", layout="wide", initial_sidebar_state="collapsed")
 
