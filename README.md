@@ -285,13 +285,13 @@ This simulates how the pipeline would operate in a production environment.
 
 ## Running the Project
 
-### 1. Install dependencies:
+### 1. Install dependencies
 
-### 2. Set up environment variables:
+### 2. Set up environment variables
 
-### 3. Run the pipeline:
+### 3. Run the pipeline
 
-### 4. View changes via Dashboard:
+### 4. View changes via Dashboard
 
 I have introduced a beautifully designed Streamlit Dashboard to visually audit the entire pipeline extraction, config diffs, and account states.
 
