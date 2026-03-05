@@ -159,6 +159,7 @@ graph TD
     classDef grey fill:#f3f4f6,stroke:#d1d5db,stroke-width:1px,color:#4b5563,rx:5px,ry:5px;
     classDef green fill:#f0fdf4,stroke:#86efac,stroke-width:1px,color:#22c55e,rx:5px,ry:5px;
     classDef orange fill:#fff7ed,stroke:#fdba74,stroke-width:1px,color:#ea580c,rx:5px,ry:5px;
+    classDef invis fill:transparent,stroke:transparent,color:transparent;
 
     style DemoPhase fill:transparent,stroke:none,font-weight:bold,font-size:14px;
     style OnboardingPhase fill:transparent,stroke:none,font-weight:bold,font-size:14px;
@@ -166,17 +167,20 @@ graph TD
     O[n8n Workflow Orchestrator]:::purple
 
     subgraph DemoPhase ["Demo Pipeline"]
+        S1[ ]:::invis
         A[Demo Transcript]:::blue
         B[Extraction Engine]:::grey
         C[Account Memo v1]:::orange
         D[Agent Spec v1]:::orange
 
+        S1 ~~~ A
         A --> B
         B --> C
         C --> D
     end
 
     subgraph OnboardingPhase ["Onboarding Pipeline"]
+        S2[ ]:::invis
         E[Onboarding Transcript]:::blue
         F[Update Extraction]:::green
         G[Patch Engine]:::grey
@@ -184,6 +188,7 @@ graph TD
         I[Agent Spec v2]:::orange
         J[Change Log]:::orange
 
+        S2 ~~~ E
         E --> F
         F --> G
         G --> H
@@ -191,8 +196,8 @@ graph TD
         I --> J
     end
 
-    O --> A
-    O --> E
+    O --> S1
+    O --> S2
     
     C -.-> G
 
