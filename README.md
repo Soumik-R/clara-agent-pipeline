@@ -193,7 +193,7 @@ flowchart LR
 ```
 
 <br>
-<img src="Images/n8n.png" alt="n8n Workflow Screenshot">
+<img src="Images/n8n.png" alt="n8n Workflow Screenshot" width="700">
 
 </div>
 
