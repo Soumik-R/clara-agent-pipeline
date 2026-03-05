@@ -192,6 +192,9 @@ flowchart LR
     style OnboardingPhase fill:transparent,stroke:none;
 ```
 
+<br>
+<img src="Images/n8n.png" alt="n8n Workflow Screenshot">
+
 </div>
 
 ---
