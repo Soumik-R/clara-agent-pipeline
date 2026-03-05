@@ -43,6 +43,7 @@ The pipeline converts conversational input into deployable agent configuration.
 <div align="center">
 
 ```mermaid
+%%{init: {'theme': 'dark'}}%%
 graph TD
     %% Custom Styles
     classDef darkNode fill:#1E1E1E,stroke:#555,stroke-width:1px,color:#fff;
@@ -79,8 +80,8 @@ graph TD
     C -. "System State" .-> G
     
     %% Make Subgraph Backgrounds Transparent
-    style DemoPhase fill:transparent,stroke:transparent,color:#fff;
-    style OnboardingPhase fill:transparent,stroke:transparent,color:#fff;
+    style DemoPhase fill:transparent,stroke:transparent;
+    style OnboardingPhase fill:transparent,stroke:transparent;
 ```
 
 </div>
@@ -151,6 +152,7 @@ Automation is triggered using an n8n workflow.
 <div align="center">
 
 ```mermaid
+%%{init: {'theme': 'dark'}}%%
 graph TD
     classDef purple fill:#f5e8f9,stroke:#c084fc,stroke-width:1px,color:#9333ea,rx:5px,ry:5px;
     classDef blue fill:#eff6ff,stroke:#93c5fd,stroke-width:1px,color:#3b82f6,rx:5px,ry:5px;
@@ -158,8 +160,8 @@ graph TD
     classDef green fill:#f0fdf4,stroke:#86efac,stroke-width:1px,color:#22c55e,rx:5px,ry:5px;
     classDef orange fill:#fff7ed,stroke:#fdba74,stroke-width:1px,color:#ea580c,rx:5px,ry:5px;
 
-    style DemoPhase fill:transparent,stroke:none,color:#fff,font-weight:bold,font-size:14px;
-    style OnboardingPhase fill:transparent,stroke:none,color:#fff,font-weight:bold,font-size:14px;
+    style DemoPhase fill:transparent,stroke:none,font-weight:bold,font-size:14px;
+    style OnboardingPhase fill:transparent,stroke:none,font-weight:bold,font-size:14px;
 
     O[n8n Workflow Orchestrator]:::purple
 
