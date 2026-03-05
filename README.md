@@ -79,8 +79,8 @@ graph TD
     C -. "System State" .-> G
     
     %% Make Subgraph Backgrounds Transparent
-    style DemoPhase fill:transparent,stroke:transparent;
-    style OnboardingPhase fill:transparent,stroke:transparent;
+    style DemoPhase fill:transparent,stroke:transparent,color:#fff;
+    style OnboardingPhase fill:transparent,stroke:transparent,color:#fff;
 ```
 
 </div>
@@ -158,8 +158,8 @@ graph TD
     classDef green fill:#f0fdf4,stroke:#86efac,stroke-width:1px,color:#22c55e,rx:5px,ry:5px;
     classDef orange fill:#fff7ed,stroke:#fdba74,stroke-width:1px,color:#ea580c,rx:5px,ry:5px;
 
-    style DemoPhase fill:transparent,stroke:none,font-weight:bold,font-size:14px;
-    style OnboardingPhase fill:transparent,stroke:none,font-weight:bold,font-size:14px;
+    style DemoPhase fill:transparent,stroke:none,color:#fff,font-weight:bold,font-size:14px;
+    style OnboardingPhase fill:transparent,stroke:none,color:#fff,font-weight:bold,font-size:14px;
 
     O[n8n Workflow Orchestrator]:::purple
 
