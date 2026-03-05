@@ -8,6 +8,12 @@
 [![n8n](https://img.shields.io/badge/n8n-Workflow_Automation-orange.svg)](https://n8n.io/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-FF4B4B.svg)](https://streamlit.io/)
 
+<br>
+
+<a href="https://youtu.be/o08wsa-1KY4?si=LIL2WQCt--TH8dHy" target="_blank">
+  <img src="https://img.youtube.com/vi/o08wsa-1KY4/maxresdefault.jpg" alt="Video Demo" width="730" style="border-radius: 8px;">
+</a>
+
 </div>
 
 ---
@@ -46,19 +52,19 @@ graph TD
     %% Demo Phase Subgraph
     subgraph DemoPhase ["Pipeline A: Demo Call"]
         Spacer1[ ]:::invis ~~~ A[Demo Transcript]:::darkNode
-        A -->|n8n Orchestrator| B[[extract_demo_data.py]]:::scriptPink
-        B --> C[(v1_memo.json)]:::dataGreen
-        C --> D[["generate_prompt.py\n(Prompt + Agent Builder)"]]:::scriptBlue
+        A -->|n8n Orchestrator| B[[Extract Demo Data]]:::scriptPink
+        B --> C[(Account Memo v1)]:::dataGreen
+        C --> D[["Generate Prompt\n(Prompt + Agent Builder)"]]:::scriptBlue
         D --> E[Retell Agent Spec v1]:::dataGreen
     end
 
     %% Onboarding Phase Subgraph
     subgraph OnboardingPhase ["Pipeline B: Onboarding Update"]
         Spacer2[ ]:::invis ~~~ F[Onboarding Transcript]:::darkNode
-        F -->|n8n Orchestrator| G[[update_from_onboarding.py]]:::scriptPink
-        G --> H[(v2_memo.json)]:::dataGreen
-        G --> I[changes.json Diff]:::darkNode
-        H --> J[["generate_prompt.py\n(Prompt + Agent Builder)"]]:::scriptBlue
+        F -->|n8n Orchestrator| G[[Update from Onboarding]]:::scriptPink
+        G --> H[(Account Memo v2)]:::dataGreen
+        G --> I[Changes Diff]:::darkNode
+        H --> J[["Generate Prompt\n(Prompt + Agent Builder)"]]:::scriptBlue
         J --> K[Retell Agent Spec v2]:::dataGreen
     end
     
