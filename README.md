@@ -191,10 +191,6 @@ flowchart LR
     style DemoPhase fill:transparent,stroke:none;
     style OnboardingPhase fill:transparent,stroke:none;
 ```
-
-<br>
-<img src="Images/n8n.png" alt="n8n Workflow Screenshot" width="500">
-
 </div>
 
 ---
