@@ -11,7 +11,7 @@
 <br>
 
 <a href="https://youtu.be/o08wsa-1KY4?si=LIL2WQCt--TH8dHy" target="_blank">
-  <img src="https://img.youtube.com/vi/o08wsa-1KY4/maxresdefault.jpg" alt="Video Demo" width="730" style="border-radius: 8px;">
+  <img src="https://img.youtube.com/vi/o08wsa-1KY4/maxresdefault.jpg" alt="Video Demo" width="560" style="border-radius: 8px;">
 </a>
 
 </div>
